@@ -1,12 +1,13 @@
 package migrations
 
 import (
+	"tugas_golang_alfi_ahsani/entity"
+
 	"gorm.io/gorm"
 )
 
 func Migration(connection *gorm.DB) error {
-	//rollback.Rollback(connection)
 	return connection.AutoMigrate(
-	// &entityBlog.BlogsLabel{},
+		&entity.Books{},
 	)
 }
