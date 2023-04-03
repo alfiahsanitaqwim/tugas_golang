@@ -1,8 +1,20 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"tugas_golang_alfi_ahsani/database"
+
+	"log"
+
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
+)
 
 func main() {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalf("Error loading %s file: %s", ".env", err)
+	}
+	database.Connect()
 	r := gin.Default()
 	r.GET("/books", func(c *gin.Context) {
 		c.JSON(200, gin.H{
